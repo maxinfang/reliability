@@ -38,47 +38,47 @@ function drawbox(type,data,conn){
     //$(element).append(durationdiv);
     
     var oNewP = document.createElement("div");
-   // oNewP.style.display = 'block'; 
-    //var durationL= addlabel("Duration: "+du[data.activity]);
-   // $(durationL).uniqueId();
-   // var durationId = $(durationL).attr('id');
-  //  $(oNewP).append(durationL); 
+    oNewP.style.display = 'block'; 
+    var durationL= addlabel("Duration: "+du[data.activity]);
+    $(durationL).uniqueId();
+    var durationId = $(durationL).attr('id');
+    $(oNewP).append(durationL); 
     $(datadiv).append(dropL.show());
-  //  $(datadiv).append(oNewP);
+    $(datadiv).append(oNewP);
     $(datadiv).append(element);
     
-  // $(element).append(addlabel("Prob"));
+   //$(element).append(addlabel("EST"));
    //  console.log("test"+data.EST);
    var EST = (data.EST=="") ? addtext("EST") : addtext("EST",data.EST);
    var ESTdata = document.createElement("div");
    ESTdata.style.display = 'block'; 
-   $(ESTdata).append(addlabel("Prob"));
+   $(ESTdata).append(addlabel("EST"));
    $(ESTdata).append(EST); 
    
    var EFT = (data.EFT=="") ? addtext("EFT") :     addtext("EFT",data.EFT);
    
    
-   //$(ESTdata).append(addlabel("EFT"));
-   //$(ESTdata).append(EFT); 
-    $(element).append (ESTdata);  
+   $(ESTdata).append(addlabel("EFT"));
+   $(ESTdata).append(EFT); 
+   $(element).append (ESTdata);  
    var LSTdata = document.createElement("div");
    ESTdata.style.display = 'block'; 
-   //$(LSTdata).append(addlabel("LST"));  
+   $(LSTdata).append(addlabel("LST"));  
    var LST = (data.LST=="") ? addtext("LST") : addtext("LST",data.LST); 
- //  $(LSTdata).append (LST); 
+   $(LSTdata).append (LST); 
    var LFT = (data.LFT=="") ? addtext("LFT") : addtext("LFT",data.LFT); 
-  // $(LSTdata).append(addlabel("LFT"));
- //  $(LSTdata).append (LFT); 
- //  $(element).append( LSTdata);
+   $(LSTdata).append(addlabel("LFT"));
+   $(LSTdata).append (LFT); 
+   $(element).append( LSTdata);
    var FFdata = document.createElement("div");
-  // ESTdata.style.display = 'block';
-  // $(FFdata).append(addlabel("FF"+"&nbsp&nbsp")); 
+   ESTdata.style.display = 'block';
+   $(FFdata).append(addlabel("FF"+"&nbsp&nbsp")); 
    var FF= (data.FF=="") ? addtext("FF") : addtext("FF",data.FF);
-  // $(FFdata).append (FF); 
-  // $(FFdata).append(addlabel("TF" +"&nbsp&nbsp")); 
+   $(FFdata).append (FF); 
+   $(FFdata).append(addlabel("TF" +"&nbsp&nbsp")); 
    var TF= (data.TF=="") ? addtext("TF") : addtext("TF",data.TF);
-  // $(FFdata).append (TF);
- //  $(element).append( FFdata); 
+   $(FFdata).append (TF);
+   $(element).append( FFdata); 
    
    $(EST).change(function() {
      data.EST= $(EST).val();
@@ -132,7 +132,7 @@ function drawbox(type,data,conn){
  } 
  updatelink(data,"activity",conn);
       //console.log(data);
-    //  $("#"+durationId).text("Duration: "+du[data.activity]);
+      $("#"+durationId).text("Duration: "+du[data.activity]);
       
       
     })
@@ -143,4 +143,3 @@ function drawbox(type,data,conn){
  
  return datadiv;
 }
-

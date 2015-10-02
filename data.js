@@ -23,18 +23,19 @@ function addDroplist(options){
 function addlabel(lable){ 
   var newlabel= document.createElement('LABEL');
   newlabel.setAttribute("for",lable);
+  
   newlabel.innerHTML = lable; 
   return newlabel;
 };
 
 function addtext(lable,value){ 
   var text= document.createElement('input');
+  
   $(text).uniqueId();  
   text.type="text";
-  text.style.width='60px';
-
-  text.name=lable; 
-  if(typeof(value) != "undefined")
+  $(text).addClass("droplist");
+  text.style.width='40px';
+  text.name=lable;    if(typeof(value) != "undefined")
   {
     
     text.value=value;

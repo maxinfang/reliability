@@ -1,5 +1,50 @@
-function drawnode(node){ 
-      //should rewrite the reload and redraw mode;
+function drawstart(){
+  
+   newdiv= document.createElement('div'); 
+   $(newdiv).attr('id','start');
+   var containerId = $(newdiv).attr('id');
+   $(newdiv).addClass("S");
+   $("#canvasdiv").append(newdiv);
+   dragzone= document.createElement('div'); 
+   
+  $(dragzone).uniqueId(); 
+  var currentId=$(dragzone).attr("id"); 
+  $(newdiv).append(dragzone);  
+  addShape("S",dragzone); 
+  
+  jsPlumb.draggable($("#"+containerId), {
+    
+  containment:$("#canvasdiv").parent(),
+        scroll:false     
+  }); 
+   
+  
+}
+
+function drawend(){
+  
+   newdiv= document.createElement('div'); 
+   $(newdiv).attr('id','end');
+   var containerId = $(newdiv).attr('id');
+   $(newdiv).addClass('E');
+   $("#canvasdiv").append(newdiv);
+   dragzone= document.createElement('div');  
+  
+  $(dragzone).uniqueId(); 
+  var currentId=$(dragzone).attr("id"); 
+  $(newdiv).append(dragzone);  
+  addShape('E',dragzone); 
+  
+  jsPlumb.draggable($("#"+containerId), {
+  containment:$("#canvasdiv").parent(),
+        scroll:false     
+  }); 
+  
+      
+}
+
+function drawnode(node){
+      
       
       newdiv= document.createElement('div'); 
       $(newdiv).attr('id',node.id);
@@ -8,190 +53,133 @@ function drawnode(node){
       $(newdiv).addClass(node.type);
       
      //postion
-     if(node.top==""){ 
-     }
-     else{
-       console.log("css:"+node.top+":"+node.left);
+      if(node.top==""){ 
+       }
+       else{
+         console.log("set position");
       $(newdiv).css({ top: node.top, left: node.left });
-    } 
-    
-    $("#canvasdiv").append(newdiv); 
-    dragzone= document.createElement('div'); 
-    deletezone= document.createElement('div'); 
+      } 
+      
+  
+      $("#canvasdiv").append(newdiv);
+      dragzone= document.createElement('div');
+  
+     deletezone= document.createElement('div'); 
     var elem = document.createElement("img");
     elem.setAttribute("src", " icon-error.png");
     $(elem).uniqueId();
     $(elem).attr('align', 'right');
+   $(deletezone).addClass("delete");
     $(deletezone).append(elem); 
     $(deletezone).addClass("delete");
-      //$(deletezone).text("delete");
-      
+  
+  
+  
+  
       $(dragzone).uniqueId();
       var deleteId  =$(elem).attr("id");
-      var currentId=$(dragzone).attr("id"); 
+      var currentId=$(dragzone).attr("id");
+      // dropL=addDroplist();
+      // $(newdiv).append(dropL);
+ 
       $(newdiv).append(deletezone);
-      $(newdiv).append(dragzone);  
-      addShape("C",dragzone);  
+     $(newdiv).append(dragzone);  
       
-      
-      var dropL;
-      var dropLid;
-      
-      
-    
-      if(node.activity==""){ 
-       node.activity=0;
-     //  dropL=addDroplist();
-       dropLid=$(dropL).prop('id');
-       //$(dropL).width('90%'); 
-      // dropL.show();
-     }
+      addShape(node.type,dragzone); 
      
-       else{        
-       // dropL=addDroplist(node.activity);
-        dropLid=$(dropL).prop('id'); 
-       // $(dropL).width('90%');
-        
-      }    
+    // $(newdiv).append(dropL);
+  
+   
      
-    
-      
-      var dataLeft= $(newdiv).position().left;
-      var dataTop= $(newdiv).position().top; 
-      datadiv= document.createElement('div');
-      $(datadiv).uniqueId();
-      
-      
-      var datadivId=$(datadiv).attr("id");
-      $(datadiv).addClass("datatable"); 
-      
-      var element = document.createElement('span');
-      element.className = "normal short";
-      
-    //$(element).append(durationdiv);
-    
-    var oNewP = document.createElement("div");
-    oNewP.style.display = 'block';
-    
-    
-    var durationL= addlabel("Duration: "+du[node.activity]);
-   // $(durationL).uniqueId();
-    //var durationId = $(durationL).attr('id');
-   // $(oNewP).append(durationL);
+  var dropL;
+  var dropLid;
+  
+  if(node.value==""){ 
+     dropL=addDroplist();
+     dropLid=$(dropL).prop('id');
+     
+  }
+  
+  else{
+    dropL=addDroplist(node.value);
+    dropLid=$(dropL).prop('id');
 
-    $(newdiv).append(datadiv);
-    
-    $(datadiv).append(dropL); 
-   // $(datadiv).append(oNewP);
-    $(datadiv).append(element);
-    
-   //$(element).append(addlabel("EST"));
+  }  
+  
+     $(dropL).change(function() { 
+      var indexvalue= $( "#"+dropLid+" option:selected" ).val();
+      node.value= indexvalue;
+      updateNode(node,"value");
+    })
+  
    
-   var EST = (node.EST=="") ? addtext("EST") :     addtext("EST",node.EST);
-   
-   var ESTdata = document.createElement("div");
-   ESTdata.style.display = 'block';
-   
-   
-   $(ESTdata).append(addlabel("Answer"));
-   $(ESTdata).append(EST);
-   
-   
-   
-   var EFT = (node.EFT=="") ? addtext("EFT") :     addtext("EFT",node.EFT);
-   
-   
-   //$(ESTdata).append(addlabel("EFT"));
-   //$(ESTdata).append(EFT);
-   
-   $(element).append (ESTdata); 
-   
-   var LSTdata = document.createElement("div");
-  // ESTdata.style.display = 'block';
-   
-   
- //  $(LSTdata).append(addlabel("LST")); 
-    
-   var LST = (node.LST=="") ? addtext("LST") : addtext("LST",node.LST);
-   
-//   $(LSTdata).append (LST);
-   
-   var LFT = (node.LFT=="") ? addtext("LFT") : addtext("LFT",node.LFT);
-   
-  // $(LSTdata).append(addlabel("LFT"));
-  // $(LSTdata).append (LFT);
-   
-  // $(element).append( LSTdata); 
-   
-   
-   var FFdata = document.createElement("div");
-  // ESTdata.style.display = 'block';
-   
-   
-   
-  // $(FFdata).append(addlabel("FF"+"&nbsp&nbsp")); 
-   var FF= (node.FF=="") ? addtext("FF") : addtext("FF",node.FF);
-   
-   
-   
-   
-   $(FFdata).append (FF);
-   
-  // $(FFdata).append(addlabel("TF" +"&nbsp&nbsp"));
-   
-   
-   
-   var TF= (node.TF=="") ? addtext("TF") : addtext("TF",node.TF);
-   
- //  $(FFdata).append (TF);
- //  $(element).append( FFdata); 
-   
-   
-   $(EST).change(function() {
-     node.EST= $(EST).val();
-     updateNode(node,"EST");
+    // if (node.parentID!=""){        
+       $(newdiv).append(dropL.show()); 
+       
+   //  }
+  
+   //  else{ 
+       
+     //  $(newdiv).append(dropL.hide()); 
+           
+     //} 
+ 
+      datadiv= document.createElement('div');
+      $(datadiv).addClass("datatable");
+      $(newdiv).append(datadiv); 
      
-   });   
-   $(EFT).change(function() {
-     node.EFT= $(EFT).val();
-     updateNode(node,"EFT");
      
-   });  
-   $(LST).change(function() {
-     node.LST= $(LST).val();
-     updateNode(node,"LST");
-     
-   }); 
-   $(LFT).change(function() {
-     node.LFT= $(LFT).val();
-     updateNode(node,"LFT");
-     
-   }); 
-   $(FF).change(function() {
-     node.FF= $(FF).val();
-     updateNode(node,"FF");
-     
-   }); 
-   $(TF).change(function() {
-     node.TF= $(TF).val();
-     updateNode(node,"TF");
-     console.log("the value has been changed");
-     
-   }); 
+  
+ /* var emv; 
+  if(node.emv==""){
+    emv=addtext("EMV");
+  }
+     else{  
+  emv= addtext("EMV",node.emv)
+     }
+  
+   $(newdiv).append(emv); */
+  
+      var prob;
+      var problabel;
+      var probs;
    
-   $(dropL).change(function() { 
-     
-    
-    var indexvalue= $( "#"+dropLid+" option:selected" ).val();
-    node.activity= indexvalue;
-    updateNode(node,"activity");
-    
-   // $("#"+durationId).text("Duration: "+du[node.activity]);
-    
-    
-  })
-   
-   
+      prob=addtext("Prob",node.prob);
+      problabel=addlabel("Prob");
+      $(datadiv).append( problabel);  
+      $(datadiv).append( prob);  
+    $(datadiv).append(dropL.show()); 
+        
+        
+      
+     var br = document.createElement('br')  
+    //$(datadiv).append(br);
+    // $(datadiv).append(problabel);
+    //  $(datadiv).append(prob);
+    //  $(datadiv).append(probs);
+       
+     $(prob).change(function() {
+           node.prob= $(prob).val();
+           updateNode(node,"prob");
+         
+});   
+  /*   $(emv).change(function() {
+           node.emv= $(emv).val();
+           updateNode(node,"emv");
+         
+      });  
+   */ 
+  
+     /* $(newdiv).dblclick(function() {
+      if (confirm('Are you sure you want to delete the node?')) {   
+        jsPlumb.detachAllConnections(currentId );
+        jsPlumb.removeAllEndpoints(currentId); 
+        deleteNode(node); 
+        $(this).empty();  
+        sentToparentPage(); 
+        }  
+      });
+  */
    $("#"+deleteId).click(function() { 
     if (confirm('Delete this node?')) {   
       jsPlumb.detachAllConnections(currentId )
@@ -200,54 +188,40 @@ function drawnode(node){
       $("#"+node.id).empty();  
       
        deleteNode(node);
-      
+         $(this).empty();  
+        sentToparentPage(); 
       
     }  
     
   });
-   
-  
     
+      jsPlumb.draggable($("#"+containerId), {
+  containment:$("#canvasdiv").parent(),
+        scroll:false     
+}); 
   
-    
-   $(dragzone).bind("dblclick","doubletap",
-      function() { 
-     $("#"+datadivId).toggle("slow") ;
-   }
-      );
-  
-   console.log(node);
-  $(datadiv).hide();
-// if(node.activity==0){$(datadiv).hide()}
-    
-//  if(mode != "correct") {$(datadiv).hide();  }
-
-
-
-jsPlumb.draggable(containerId);
-
-$("#"+containerId).draggable(    
-  {   containment: $("#canvasdiv").parent(),
-  scroll:false,
-  handle:  "#"+currentId,
-  stop: function(event, ui ){ 
-   position = ui.position; 
-   value="top:"+position.top+"left"+position.left;
-   node.top=position.top;
-   node.left=position.left; 
-   updateNode(node,"top");
-   updateNode(node,"left"); 
- }
-}
-);   
-    //connection
-      
+      $("#"+containerId).draggable(  
+         {   containment: $("#canvasdiv").parent(),
+             scroll:false,
+             handle:  "#"+currentId,
+             stop: function(event, ui ){ 
+             position = ui.position; 
+             //value="top:"+position.top+"left:"+position.left;
+             node.top=position.top;
+             node.left=position.left; 
+             updateNode(node,"top");
+             updateNode(node,"left"); 
+            }
+          }
+       );   
+      //connection
+     
       var top= $('#'+containerId).position().top;
       var left=$('#'+containerId).position().left;
-      
+  
       node.top=top;
       node.left=left;
-      
+  
       return node;
-      
-    }
+   
+}
