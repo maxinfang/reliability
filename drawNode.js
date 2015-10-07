@@ -1,3 +1,47 @@
+function drawbackground() {
+      
+   newdiv= document.createElement('div'); 
+   $(newdiv).attr('id','request-grid');
+   var containerId = $(newdiv).attr('id'); 
+   $(newdiv).addClass("request-grid");
+  
+  
+  jsPlumb.draggable($("#request-grid"), {
+    
+  containment:$("#canvasdiv").parent(),
+        scroll:false     
+  }); 
+    $(newdiv).draggable({
+        containment: "#document",
+        scroll: false,
+        stack: "#content div",
+        over: function( event, ui ) {alert("over")}
+    });
+   
+
+    $(newdiv).resizable({
+        helper: "ui-resizable-helper",
+        containment: "document", 
+        start:function(event,ui){
+          ui.element.css('position','absolute');
+             
+        }
+       
+    });
+
+    $(newdiv).resizable({
+        helper: "ui-resizable-helper",
+        containment: "document",
+        start:function(event,ui){
+            ui.element.css('position','absolute');
+        }
+    });
+
+}
+
+
+
+
 function drawstart(){
   
    newdiv= document.createElement('div'); 

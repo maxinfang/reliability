@@ -274,6 +274,12 @@ $(document).ready(function()  {
          node= drawnode(node);
          addNewNode(node);
   });
+   $("#background").click(function(){ 
+         var node= new Node();
+         node.id =generateID(myNodes);
+         node= drawbackground(node);
+         
+  });
    
    $("#clear").click(function(){
      
