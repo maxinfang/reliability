@@ -6,19 +6,33 @@ function drawbackground() {
    $(newdiv).addClass("request-grid");
   
   
+  
   jsPlumb.draggable($("#request-grid"), {
     
   containment:$("#canvasdiv").parent(),
         scroll:false     
   }); 
-    $(newdiv).draggable({
+ // addShape("S", newdiv);
+  console.log("test");
+ //   
+  
+  /*  $(newdiv).draggable({
         containment: "#document",
         scroll: false,
         stack: "#content div",
         over: function( event, ui ) {alert("over")}
     });
+   */
    
-
+    addShape("S", newdiv); 
+    jsPlumb.draggable($("#"+containerId), {
+    containment:$("#canvasdiv").parent(),
+        scroll:false     
+    }); 
+   
+  
+ 
+  
     $(newdiv).resizable({
         helper: "ui-resizable-helper",
         containment: "document", 
@@ -86,6 +100,9 @@ function drawend(){
   
       
 }
+
+
+
 
 function drawnode(node){
       

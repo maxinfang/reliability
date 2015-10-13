@@ -22,30 +22,59 @@
   
   
 
-    $("#request-grid").draggable({
+  /*  $("#request-grid").draggable({
         containment: "#document",
         scroll: false,
         stack: "#content div",
         over: function( event, ui ) {alert("over")}
     });
+  */
+  
+  addShape("S", $("#request-grid")); 
+  addShape("S", $("#bb-clist")); 
+  
+   addShape("E", $("#request-grid")); 
+  addShape("E", $("#bb-clist")); 
+  
+  
+ jsPlumb.draggable($("#request-grid"), {
+    
+     containment:$("#canvasdiv").parent(),
+        scroll:false     
+  }); 
+  
+  jsPlumb.draggable($("#bb-clist"), {
+    
+     containment:$("#canvasdiv").parent(),
+        scroll:false     
+  }); 
+  /*
     $("#bb-clist").draggable({
         containment: "#document",
         scroll: false,
         stack: "#content div",
         over: function( event, ui ) {alert("over")}
     });
-
-    $("#request-grid").resizable({
-        helper: "ui-resizable-helper",
-        containment: "document", 
-        start:function(event,ui){
-          ui.element.css('position','absolute');
-             
+  */
+  
+  
+    $("#request-grid").resizable(  {
+        resize : function(event, ui) {            
+            jsPlumb.repaint(ui.helper);
+        },
+      
+       helper: "ui-resizable-helper",
+       containment: "document", 
+       start:function(event,ui){
+       ui.element.css('position','absolute'); 
         }
        
     });
 
     $("#bb-clist").resizable({
+       resize : function(event, ui) {            
+            jsPlumb.repaint(ui.helper);
+        },
         helper: "ui-resizable-helper",
         containment: "document",
         start:function(event,ui){
