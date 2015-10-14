@@ -14,7 +14,7 @@ function drawbackground() {
   }); 
   addShape("S", newdiv);
   addShape("E", newdiv);
-    console.log("test");
+  console.log("test");
  //   
   
   /*  $(newdiv).draggable({

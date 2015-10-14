@@ -113,7 +113,7 @@
       <style>
         
          .request-grid {
-    position:absolute;
+           position: relative;
     height:100px;
     width: 200px;
     top: 100px;
@@ -125,7 +125,7 @@
     background-color:green;
 }
 .bb-clist {
-          position:absolute;
+        
     top: 300px;
     left;100px;
     opacity:0.2;
@@ -189,7 +189,7 @@
     z-index:11111111;
  
 }  .box { 
-  position: relative;
+  position: absolute;
   background: transparent;
   z-index:50;
         }     
@@ -233,12 +233,8 @@
         </style> 
      </head>  
  <body>   <div id="containment_limit" >
-   <div id='canvasdiv'>    </div>
+    <div class='box' id="hide">
    
-   <div class='box' id="hide">
-     <!--div id="request-grid"></div>
-    <br/>
-    <div id="bb-clist"></div -->
      
   
    <button id=r>add Rect with and</button>
@@ -246,6 +242,9 @@
   
       
    <button id=clear>clear</button>
+   <div id='canvasdiv'>    </div>
+   
+  
    </div>
       
    <p id='warn'>  </p>

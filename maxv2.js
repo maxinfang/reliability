@@ -232,8 +232,8 @@ $(document).ready(function()  {
 })
          
      
-   drawstart() ;  
-   drawend();
+   //drawstart() ;  
+  // drawend();
   
     
   if(mode!="submission"){
