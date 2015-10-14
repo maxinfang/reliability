@@ -1,19 +1,20 @@
 function drawbackground() {
-      
+    
    newdiv= document.createElement('div'); 
-   $(newdiv).attr('id','request-grid');
+   uniqueId= $(newdiv).uniqueId(); 
+   
    var containerId = $(newdiv).attr('id'); 
    $(newdiv).addClass("request-grid");
-  
-  
-  
-  jsPlumb.draggable($("#request-grid"), {
+   $("#canvasdiv").append(newdiv);
+   console.log($(newdiv)); 
+   jsPlumb.draggable($(newdiv), {
     
   containment:$("#canvasdiv").parent(),
         scroll:false     
   }); 
- // addShape("S", newdiv);
-  console.log("test");
+  addShape("S", newdiv);
+  addShape("E", newdiv);
+    console.log("test");
  //   
   
   /*  $(newdiv).draggable({
@@ -24,7 +25,7 @@ function drawbackground() {
     });
    */
    
-    addShape("S", newdiv); 
+  //  addShape("S", newdiv); 
     jsPlumb.draggable($("#"+containerId), {
     containment:$("#canvasdiv").parent(),
         scroll:false     
@@ -114,17 +115,16 @@ function drawnode(node){
       $(newdiv).addClass(node.type);
       
      //postion
-      if(node.top==""){ 
-       }
-       else{
-         console.log("set position");
-      $(newdiv).css({ top: node.top, left: node.left });
-      } 
+     // if(node.top==""){ 
+      // }
+     //  else{
+     //    console.log("set position");
+      //$(newdiv).css({ top: node.top, left: node.left });
+    //  } 
       
   
       $("#canvasdiv").append(newdiv);
-      dragzone= document.createElement('div');
-  
+      dragzone= document.createElement('div'); 
      deletezone= document.createElement('div'); 
     var elem = document.createElement("img");
     elem.setAttribute("src", " icon-error.png");

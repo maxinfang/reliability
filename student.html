@@ -28,8 +28,8 @@
         stack: "#content div",
         over: function( event, ui ) {alert("over")}
     });
-  */
   
+   /*
   addShape("S", $("#request-grid")); 
   addShape("S", $("#bb-clist")); 
   
@@ -48,14 +48,14 @@
      containment:$("#canvasdiv").parent(),
         scroll:false     
   }); 
-  /*
+ 
     $("#bb-clist").draggable({
         containment: "#document",
         scroll: false,
         stack: "#content div",
         over: function( event, ui ) {alert("over")}
     });
-  */
+  
   
   
     $("#request-grid").resizable(  {
@@ -81,7 +81,7 @@
             ui.element.css('position','absolute');
         }
     });
-  
+  */
      function collision($div1, $div2) {
       var x1 = $div1.offset().left;
       var y1 = $div1.offset().top;
@@ -112,7 +112,7 @@
 }); </script>
       <style>
         
-         #request-grid {
+         .request-grid {
     position:absolute;
     height:100px;
     width: 200px;
@@ -124,7 +124,7 @@
     opacity:0.2;  
     background-color:green;
 }
-#bb-clist {
+.bb-clist {
           position:absolute;
     top: 300px;
     left;100px;
@@ -236,9 +236,9 @@
    <div id='canvasdiv'>    </div>
    
    <div class='box' id="hide">
-     <div id="request-grid"></div>
+     <!--div id="request-grid"></div>
     <br/>
-    <div id="bb-clist"></div >
+    <div id="bb-clist"></div -->
      
   
    <button id=r>add Rect with and</button>

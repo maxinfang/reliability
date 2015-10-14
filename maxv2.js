@@ -277,7 +277,7 @@ $(document).ready(function()  {
    $("#background").click(function(){ 
          var node= new Node();
          node.id =generateID(myNodes);
-         node= drawbackground(node);
+         node= drawbackground();
          
   });
    
