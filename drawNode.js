@@ -1,7 +1,7 @@
 function drawbackground() {
     
-   newdiv= document.createElement('div'); 
-   uniqueId= $(newdiv).uniqueId(); 
+  /* newdiv= document.createElement('div'); 
+    uniqueId= $(newdiv).uniqueId(); 
    
    var containerId = $(newdiv).attr('id'); 
    $(newdiv).addClass("request-grid");
@@ -15,15 +15,16 @@ function drawbackground() {
   addShape("S", newdiv);
   addShape("E", newdiv);
   console.log("test");
- //   
+
+   
   
-  /*  $(newdiv).draggable({
+    $(newdiv).draggable({
         containment: "#document",
         scroll: false,
         stack: "#content div",
         over: function( event, ui ) {alert("over")}
     });
-   */
+   
    
   //  addShape("S", newdiv); 
     jsPlumb.draggable($("#"+containerId), {
@@ -51,6 +52,8 @@ function drawbackground() {
             ui.element.css('position','absolute');
         }
     });
+  
+  */
 
 }
 
@@ -111,7 +114,7 @@ function drawnode(node){
       newdiv= document.createElement('div'); 
       $(newdiv).attr('id',node.id);
       var containerId = $(newdiv).attr('id');
-      $(newdiv).addClass("container");
+      $(newdiv).addClass("request-grid");
       $(newdiv).addClass(node.type);
       
      //postion
@@ -124,7 +127,7 @@ function drawnode(node){
       
   
       $("#canvasdiv").append(newdiv);
-      dragzone= document.createElement('div'); 
+    dragzone= newdiv; 
      deletezone= document.createElement('div'); 
     var elem = document.createElement("img");
     elem.setAttribute("src", " icon-error.png");
@@ -137,23 +140,23 @@ function drawnode(node){
   
   
   
-      $(dragzone).uniqueId();
+     // $(dragzone).uniqueId();
       var deleteId  =$(elem).attr("id");
       var currentId=$(dragzone).attr("id");
       // dropL=addDroplist();
       // $(newdiv).append(dropL);
  
-      $(newdiv).append(deletezone);
+     $(newdiv).append(deletezone);
      $(newdiv).append(dragzone);  
       
-      addShape(node.type,dragzone); 
+      addShape("N",dragzone); 
      
     // $(newdiv).append(dropL);
   
    
      
-  var dropL;
-  var dropLid;
+  //var dropL;
+  //var dropLid;
   
   if(node.value==""){ 
      dropL=addDroplist();
@@ -167,15 +170,15 @@ function drawnode(node){
 
   }  
   
-     $(dropL).change(function() { 
-      var indexvalue= $( "#"+dropLid+" option:selected" ).val();
-      node.value= indexvalue;
-      updateNode(node,"value");
-    })
+    // $(dropL).change(function() { 
+    //  var indexvalue= $( "#"+dropLid+" option:selected" ).val();
+     // node.value= indexvalue;
+     // updateNode(node,"value");
+   // })
   
    
     // if (node.parentID!=""){        
-       $(newdiv).append(dropL.show()); 
+    //   $(newdiv).append(dropL.show()); 
        
    //  }
   
@@ -186,7 +189,7 @@ function drawnode(node){
      //} 
  
       datadiv= document.createElement('div');
-      $(datadiv).addClass("datatable");
+    //  $(datadiv).addClass("datatable");
       $(newdiv).append(datadiv); 
      
      
@@ -207,12 +210,8 @@ function drawnode(node){
    
       prob=addtext("Prob",node.prob);
       problabel=addlabel("Prob");
-      $(datadiv).append( problabel);  
-      $(datadiv).append( prob);  
-    $(datadiv).append(dropL.show()); 
-        
-        
       
+         
      var br = document.createElement('br')  
     //$(datadiv).append(br);
     // $(datadiv).append(problabel);
@@ -256,11 +255,17 @@ function drawnode(node){
     
   });
     
-      jsPlumb.draggable($("#"+containerId), {
+     jsPlumb.draggable($("#"+containerId), {
   containment:$("#canvasdiv").parent(),
         scroll:false     
 }); 
   
+  $("#"+containerId).resizable({
+        resize : function(event, ui) {            
+                jsPlumb.repaint(ui.helper);
+            }
+        });
+  /*
       $("#"+containerId).draggable(  
          {   containment: $("#canvasdiv").parent(),
              scroll:false,
@@ -276,7 +281,8 @@ function drawnode(node){
           }
        );   
       //connection
-     
+     */
+  console.log(containerId);
       var top= $('#'+containerId).position().top;
       var left=$('#'+containerId).position().left;
   

@@ -11,6 +11,7 @@ function addShape(type,dragzone){
   if (type=="S") {addDot(dragzone);}
    if (type=="E") {addEnd(dragzone);}
   if (type=="D") {addDiamond(dragzone);}
+    if (type=="N") {addN(dragzone);}
 }
 
 
@@ -61,7 +62,33 @@ function addEnd(dragzone){
 }
 
 
- 
+function addN(dragzone) { 
+  
+    var sourcePoint= {
+        anchor:"Bottom", 
+         connectorStyle: {
+            lineWidth: 2,
+            strokeStyle: '#666'
+        }, 
+        connector:["Flowchart"],
+        maxConnections: -1,
+        /*connectorOverlays: [["Arrow",
+        { width: 15,
+         length: 15}
+        ]], */
+        isSource:true,
+        isTarget:false
+        };
+         
+        var targetPoint= {
+        anchor: "Top",
+        isSource:false,
+        isTarget:true
+    };  
+    var currentId = $(dragzone).attr('id'); 
+    e1= jsPlumb.addEndpoint(currentId, sourcePoint);
+    e2= jsPlumb.addEndpoint(currentId, targetPoint);   
+  } 
 
 
 
