@@ -214,10 +214,8 @@ $(document).ready(function()  {
         if($(el).hasClass("droplist")){
          $(el).hide();
         } 
-    
-    
-          if($(el).hasClass("datatable")){
-        
+      
+          if($(el).hasClass("datatable")){ 
             $(el).children().each(function(noo,ell){
         if($(ell).hasClass("Prob")){
         $(ell).hide();

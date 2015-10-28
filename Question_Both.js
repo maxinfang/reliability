@@ -5,7 +5,7 @@
  var questionId=this.frameElement.attributes.id.value; 
  var array = questionId.split("_");
 
-  
+//  jsPlumb.Defaults.Connector = [ "Flowchart", { stub: [10, 50], //midpoint: 0.0001 } ];
 // Special handling may be required here if iframe id has double quotes included.
 if(array[0] != "question"){
   alert ("iframe id does not match required format. It should begin with question_: " + questionId);

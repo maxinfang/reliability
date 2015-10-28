@@ -76,6 +76,7 @@ function drawstart(){
   
   jsPlumb.draggable($("#"+containerId), {
     
+    
   containment:$("#canvasdiv").parent(),
         scroll:false     
   }); 
@@ -114,7 +115,7 @@ function drawnode(node){
       newdiv= document.createElement('div'); 
       $(newdiv).attr('id',node.id);
       var containerId = $(newdiv).attr('id');
-      $(newdiv).addClass("request-grid");
+      $(newdiv).addClass("container");
       $(newdiv).addClass(node.type);
       
      //postion
@@ -127,15 +128,16 @@ function drawnode(node){
       
   
       $("#canvasdiv").append(newdiv);
-    dragzone= newdiv; 
+     dragzone= newdiv; 
+   $(newdiv).addClass("request-grid");
      deletezone= document.createElement('div'); 
     var elem = document.createElement("img");
     elem.setAttribute("src", " icon-error.png");
     $(elem).uniqueId();
-    $(elem).attr('align', 'right');
-   $(deletezone).addClass("delete");
-    $(deletezone).append(elem); 
-    $(deletezone).addClass("delete");
+   
+  // $(deletezone).addClass("delete");
+  //  $(deletezone).append(elem); 
+   // $(deletezone).addClass("delete");
   
   
   
@@ -254,11 +256,11 @@ function drawnode(node){
     }  
     
   });
-    
-     jsPlumb.draggable($("#"+containerId), {
+     
+    jsPlumb.draggable($("#"+containerId), {
   containment:$("#canvasdiv").parent(),
         scroll:false     
-}); 
+ }); 
   
   $("#"+containerId).resizable({
         resize : function(event, ui) {            

@@ -13,8 +13,7 @@ function addShape(type,dragzone){
   if (type=="D") {addDiamond(dragzone);}
     if (type=="N") {addN(dragzone);}
 }
-
-
+ 
 
 function addDot(dragzone){
   var paper = new Raphael(
@@ -70,19 +69,29 @@ function addN(dragzone) {
             lineWidth: 2,
             strokeStyle: '#666'
         }, 
-        connector:["Flowchart"],
+        connector:["StateMachine"],
         maxConnections: -1,
-        /*connectorOverlays: [["Arrow",
-        { width: 15,
-         length: 15}
-        ]], */
+        //connectorOverlays: [["Arrow",
+        //{ width: 15,
+       //  length: 15}
+      //  ]],  
         isSource:true,
-        isTarget:false
+        isTarget:true
         };
          
         var targetPoint= {
+           connectorStyle: {
+            lineWidth: 2,
+            strokeStyle: '#666'
+        }, 
+        connector:["StateMachine"],
+        maxConnections: -1,
+      //  connectorOverlays: [["Arrow",
+     //   { width: 15,
+       //  length: 15}
+      //  ]],  
         anchor: "Top",
-        isSource:false,
+        isSource:true,
         isTarget:true
     };  
     var currentId = $(dragzone).attr('id'); 
@@ -115,13 +124,13 @@ function addRect(dragzone) {
          length: 15}
         ]], */
         isSource:true,
-        isTarget:false
+        isTarget:true,
         };
          
         var targetPoint= {
         anchor: "Top",
-        isSource:false,
-        isTarget:true
+        isSource:true,
+        isTarget:true,
     };  
     var currentId = $(dragzone).attr('id'); 
     e1= jsPlumb.addEndpoint(currentId, sourcePoint);
