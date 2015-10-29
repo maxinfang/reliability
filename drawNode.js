@@ -6,14 +6,25 @@ function drawbackground() {
    var containerId = $(newdiv).attr('id'); 
    $(newdiv).addClass("request-grid");
    $("#canvasdiv").append(newdiv);
-   console.log($(newdiv)); 
+   
+  
+    deletezone= document.createElement('div'); 
+    var elem = document.createElement("img");
+    elem.setAttribute("src", " icon-error.png");
+    $(elem).uniqueId();
+    $(elem).attr('align', 'right');
+    $(deletezone).addClass("deletebackground");
+    $(deletezone).append(elem); 
+ 
+   $(newdiv).append(deletezone);
+  
    jsPlumb.draggable($(newdiv), {
     
   containment:$("#canvasdiv").parent(),
         scroll:false     
   }); 
-  addShape("S", newdiv);
-  addShape("E", newdiv);
+ // addShape("S", newdiv);
+ // addShape("E", newdiv);
     console.log("test");
  //   
   

@@ -88,13 +88,14 @@ function addRect(dragzone) {
          length: 15}
         ]], */
         isSource:true,
-        isTarget:false
+        isTarget:true
         };
          
         var targetPoint= {
         anchor: "Top",
         isSource:false,
-        isTarget:true
+        isTarget:true,
+           maxConnections: -1,
     };  
     var currentId = $(dragzone).attr('id'); 
     e1= jsPlumb.addEndpoint(currentId, sourcePoint);
@@ -126,12 +127,12 @@ function addRectwithAnd(dragzone) {
          length: 15}
         ]], */
         isSource:true,
-        isTarget:false
+        isTarget:true
         };
          
         var targetPoint= {
         anchor: "Top",
-        isSource:false,
+        isSource:true,
         isTarget:true,
            maxConnections: -1,
     };  
