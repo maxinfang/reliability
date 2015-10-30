@@ -11,7 +11,7 @@ function drawbackground() {
     deletezone= document.createElement('div'); 
     var elem = document.createElement("img");
     elem.setAttribute("src", " icon-error.png");
-    $(elem).uniqueId();
+    var deleteId =  $(elem).uniqueId();
     $(elem).attr('align', 'right');
     $(deletezone).addClass("deletebackground");
     $(deletezone).append(elem); 
@@ -37,6 +37,8 @@ function drawbackground() {
    */
    
   //  addShape("S", newdiv); 
+  
+  
     jsPlumb.draggable($("#"+containerId), {
     containment:$("#canvasdiv").parent(),
         scroll:false     
@@ -62,6 +64,8 @@ function drawbackground() {
             ui.element.css('position','absolute');
         }
     });
+  
+   
 
 }
 
