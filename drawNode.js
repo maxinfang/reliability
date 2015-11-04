@@ -5,18 +5,35 @@ function drawbackground() {
    
    var containerId = $(newdiv).attr('id'); 
    $(newdiv).addClass("request-grid");
-   $("#canvasdiv").append(newdiv);
-   
+   $("#canvasdiv").append(newdiv); 
   
-    deletezone= document.createElement('div'); 
-    var elem = document.createElement("img");
-    elem.setAttribute("src", " icon-error.png");
-    var deleteId =  $(elem).uniqueId();
-    $(elem).attr('align', 'right');
-    $(deletezone).addClass("deletebackground");
-    $(deletezone).append(elem); 
- 
+   
+   dragzone= document.createElement('div'); 
+   uniqueId= $(dragzone).uniqueId(); 
+  // var dragId = $(dragzone).attr('id'); 
+  // $(dragzone).addClass("request-grid"); 
+  backgroundgreen= document.createElement('div'); 
+   $(backgroundgreen).addClass("green-background");
+  
+   deletezone= document.createElement('div'); 
+   var elem = document.createElement("img");
+   elem.setAttribute("src", " icon-error.png");
+   var deleteId =  $(elem).uniqueId();
+  $(elem).attr('align', 'right');
+  $(deletezone).addClass("deletebackground");
+  $(deletezone).append(elem); 
+   
+   $(newdiv).append(backgroundgreen); 
    $(newdiv).append(deletezone);
+  
+  
+  textfield=addtext("Prob","");
+  $(newdiv).append(textfield);
+  
+  $( deletezone).click(function() { 
+    if (confirm('Delete this node?')) { $(this).parent().empty(); }
+    
+  });
   
    jsPlumb.draggable($(newdiv), {
     
@@ -39,13 +56,11 @@ function drawbackground() {
   //  addShape("S", newdiv); 
   
   
-    jsPlumb.draggable($("#"+containerId), {
+    jsPlumb.draggable($("#"+ containerId), {
     containment:$("#canvasdiv").parent(),
         scroll:false     
     }); 
-   
-  
- 
+    
   
     $(newdiv).resizable({
         helper: "ui-resizable-helper",
@@ -64,6 +79,9 @@ function drawbackground() {
             ui.element.css('position','absolute');
         }
     });
+  
+   
+   
   
    
 
@@ -91,7 +109,8 @@ function drawstart(){
   containment:$("#canvasdiv").parent(),
         scroll:false     
   }); 
-   
+  
+  
   
 }
 
@@ -136,8 +155,7 @@ function drawnode(node){
      //    console.log("set position");
       //$(newdiv).css({ top: node.top, left: node.left });
     //  } 
-      
-  
+       
       $("#canvasdiv").append(newdiv);
       dragzone= document.createElement('div'); 
      deletezone= document.createElement('div'); 
@@ -150,8 +168,7 @@ function drawnode(node){
     $(deletezone).addClass("delete");
   
   
-  
-  
+   
       $(dragzone).uniqueId();
       var deleteId  =$(elem).attr("id");
       var currentId=$(dragzone).attr("id");
@@ -256,13 +273,13 @@ function drawnode(node){
         }  
       });
   */
+  
    $("#"+deleteId).click(function() { 
     if (confirm('Delete this node?')) {   
       jsPlumb.detachAllConnections(currentId )
       jsPlumb.removeAllEndpoints(currentId); 
        
-      $("#"+node.id).empty();  
-      
+      $("#"+node.id).empty();   
        deleteNode(node);
          $(this).empty();  
         sentToparentPage(); 
