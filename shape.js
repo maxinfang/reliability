@@ -28,7 +28,7 @@ function addDot(dragzone){
        connector:["Flowchart"],
         maxConnections: -1, 
         isSource:true,
-        isTarget:true
+        isTarget:false
         };
          
         
@@ -50,7 +50,7 @@ function addEnd(dragzone){
         }, 
        connector:["Flowchart"],
         maxConnections: -1, 
-        isSource:true,
+        isSource:false,
         isTarget:true
         };
          
@@ -88,7 +88,7 @@ function addRect(dragzone) {
          length: 15}
         ]], */
         isSource:true,
-        isTarget:true
+        isTarget:false
         };
          
         var targetPoint= {

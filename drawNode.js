@@ -27,7 +27,11 @@ function drawbackground() {
    $(newdiv).append(deletezone);
   
   
+    
+      problabel=addlabel("Prob");
+  
   textfield=addtext("Prob","");
+  $(newdiv).append(problabel);
   $(newdiv).append(textfield);
   
   $( deletezone).click(function() { 
