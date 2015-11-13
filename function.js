@@ -51,8 +51,8 @@ function deserialise(string){
        node.type= nodeAttribute[0]
        node.id=nodeAttribute[1];
        node.value=nodeAttribute[2];
-       node.left =nodeAttribute[3];
-       node.top =nodeAttribute[4]; 
+       node.Left =nodeAttribute[3];
+       node.Top =nodeAttribute[4]; 
        node.emv=nodeAttribute[5];
        node.prob=nodeAttribute[6]; 
        node.parentID=nodeAttribute[7];  
