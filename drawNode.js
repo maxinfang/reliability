@@ -180,12 +180,12 @@ function drawnode(node){
       $(newdiv).addClass(node.type);
       
      //postion
-     // if(node.top==""){ 
-      // }
-     //  else{
-     //    console.log("set position");
-      //$(newdiv).css({ top: node.top, left: node.left });
-    //  } 
+     if(node.top==""){ 
+       }
+     else{
+        console.log("set position");
+     $(newdiv).css({ top: node.top, left: node.left });
+     } 
        
       $("#canvasdiv").append(newdiv);
       dragzone= document.createElement('div'); 

@@ -32,7 +32,7 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
        this.top ="";
        this.left=""; 
        this.value=""; 
-       this. emv="";//change this to the type? 
+       this.emv="";//change this to the type? 
        this.prob="" 
      }  
  
@@ -51,12 +51,11 @@ function deserialise(string){
        node.type= nodeAttribute[0]
        node.id=nodeAttribute[1];
        node.value=nodeAttribute[2];
-       node.Left =nodeAttribute[3];
-       node.Top =nodeAttribute[4]; 
+       node.left =nodeAttribute[3];
+       node.top =nodeAttribute[4]; 
        node.emv=nodeAttribute[5];
        node.prob=nodeAttribute[6]; 
-       node.parentID=nodeAttribute[7];  
-       
+       node.parentID=nodeAttribute[7];   
        console.log(node);
        array.push(node);
        }  
