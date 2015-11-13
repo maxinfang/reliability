@@ -38,7 +38,7 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
  
 function deserialise(string){
       
-       var array= new Array();
+       var arrayA= new Array();
     //if (string ="no answer") return array;
        var stringnode=  string.split('a');
     //   console.log(stringnode);
@@ -47,17 +47,24 @@ function deserialise(string){
        var nodeAttribute=stringnode[i].split('b');
        //console.log(nodeAttribute[1]);
        var node = new Node();
+         console.log(nodeAttribute);
        node.type= nodeAttribute[0]
        node.id=nodeAttribute[1];
        node.value=nodeAttribute[2];
-       node.left =nodeAttribute[3]; 
+       node.left =nodeAttribute[3];
        node.top =nodeAttribute[4]; 
        node.emv=nodeAttribute[5];
        node.prob=nodeAttribute[6]; 
        node.parentID=nodeAttribute[7]; 
-       array.push(node); 
+         
+       console.log(node);
+       arrayA.push(node);  
        }  
-     return array; 
+  
+  console.log("-----deserialise------------ ˆ");
+  console.log(arrayA);
+   
+     return arrayA; 
 }
 
 
@@ -83,6 +90,7 @@ function serialise(myNodes){
       answervalue+=MEMBER_SEPARATOR;
       answervalue+=NODE_SEPARATOR;
     } 
+ 
       return answervalue;
 };
 
@@ -221,5 +229,41 @@ function deleteNode(node)
 
 
 
+  function validateNum(value)
+{
+    var num = value;
+    var regex=/^[-+]?[0-9]*\.?[0-9]*$/;
+    var emdashregex=/[－]+/;
+    var commaregex=/[,]+/;
+  
+  message="true";
+  
+  if (!num.match(regex)) { message="Numbers must only contain -.1234567890"; 
+                          }
+     
+     
+  if(num.match(emdashregex)){
+         message +="\nHint: Are you using the standard negative sign? ";  
+              } 
+  
+ if(num.match(commaregex)){
+        message +="\nHint: Do not use comma (,) as decimal point? ";  
+  }
+         
+   return message;
+  
+  
+ }
 
+  function checkInp(value)
+
+ {
+   var x=value ;
+    regex=/^[-+]?[0-9]*\.?[0-9]*$/;;
+    if (!x.match(regex))
+      { 
+        return false;
+      }
+
+ }
  

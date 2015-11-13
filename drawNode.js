@@ -28,11 +28,38 @@ function drawbackground() {
   
   
     
-      problabel=addlabel("Prob");
+  problabel=addlabel("Prob");
   
   textfield=addtext("Prob","");
   $(newdiv).append(problabel);
   $(newdiv).append(textfield);
+  
+  
+   textfield.addEventListener("input", function(e) {
+    
+    var num = textfield.value; 
+    var message = validateNum( num);
+    if (message!="true"){
+         alert(message);
+        textfield.value= textfield.defaultValue;
+         }else{
+        textfield.defaultValue= num;
+           
+      }
+    
+  }, false);
+       
+     $(textfield).change(function() {
+          if(! checkInp($(textfield).val())){
+           //node.emv= $(prob).val(); 
+           //updateNode(node,"prob");
+       }
+       else{
+           
+       }
+});   
+  
+  
   
   $( deletezone).click(function() { 
     if (confirm('Delete this node?')) { $(this).parent().empty(); }
@@ -254,12 +281,34 @@ function drawnode(node){
     // $(datadiv).append(problabel);
     //  $(datadiv).append(prob);
     //  $(datadiv).append(probs);
+         
+         
+          prob.addEventListener("input", function(e) {
+    
+    var num = prob.value; 
+    var message = validateNum( num);
+    if (message!="true"){
+         alert(message);
+        prob.value= prob.defaultValue;
+         }else{
+        prob.defaultValue= num;
+           
+      }
+    
+  }, false);
        
      $(prob).change(function() {
-           node.prob= $(prob).val();
-           updateNode(node,"prob");
-         
+          if(! checkInp($(prob).val())){
+           //node.emv= $(prob).val(); 
+           //updateNode(node,"prob");
+       }
+       else{
+           
+       }
 });   
+  
+  
+   
   /*   $(emv).change(function() {
            node.emv= $(emv).val();
            updateNode(node,"emv");

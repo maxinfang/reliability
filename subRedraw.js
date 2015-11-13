@@ -91,13 +91,14 @@ $(document).ready(function()  {
    //check wehter we need reload or not
   
   var history=""; 
+  
   if(mode=="correct"){
     
     history = getCorrectAnswer();
    
     
     }
-      
+    //history="Ab1bb293b145bbb2baAb2bb78b44bbbbaAb3bb91b257bbb1baAb4bb235b352bbb3ba";
   if(history == "" ){ 
       }
       else{ 
