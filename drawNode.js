@@ -124,7 +124,7 @@ function drawbackground() {
 function drawstart(){
   
    newdiv= document.createElement('div'); 
-   $(newdiv).attr('id','start');
+   $(newdiv).attr('id','0');
    var containerId = $(newdiv).attr('id');
    $(newdiv).addClass("S");
    $("#canvasdiv").append(newdiv);

@@ -38,7 +38,7 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
  
 function deserialise(string){
       
-       var arrayA= new Array();
+       var array= new Array();
     //if (string ="no answer") return array;
        var stringnode=  string.split('a');
     //   console.log(stringnode);
@@ -55,16 +55,16 @@ function deserialise(string){
        node.top =nodeAttribute[4]; 
        node.emv=nodeAttribute[5];
        node.prob=nodeAttribute[6]; 
-       node.parentID=nodeAttribute[7]; 
-         
+       node.parentID=nodeAttribute[7];  
+       
        console.log(node);
-       arrayA.push(node);  
+       array.push(node);
        }  
   
-  console.log("-----deserialise------------ ˆ");
-  console.log(arrayA);
-   
-     return arrayA; 
+  console.log("-----deserialise------------ ");
+  console.log(array);
+  console.log("------------------------- ");
+     return array; 
 }
 
 
