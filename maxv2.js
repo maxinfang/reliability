@@ -1,4 +1,6 @@
  var myNodes=new Array();
+
+var mybgNodes= new Array();
  
  var questionId=this.frameElement.attributes.id.value; 
  
@@ -74,11 +76,8 @@ function getHistory(){
     }  
          
     }
-  
     
-  
-  
-  
+ 
  } 
 
 
@@ -275,9 +274,11 @@ $(document).ready(function()  {
          addNewNode(node);
   });
    $("#background").click(function(){ 
-         var node= new Node();
-         node.id =generateID(myNodes);
-         node= drawbackground();
+         var node= new bgNode();
+         node.id =generateID(mybgNodes);
+         
+         node= drawbackground(node);
+         addNewbgNode(node);
          
   });
    

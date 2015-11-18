@@ -33,8 +33,22 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
        this.left=""; 
        this.value=""; 
        this.emv="";//change this to the type? 
-       this.prob="" 
+       this.prob="" ;
+     
      }  
+
+function bgNode(id,type,top,left,bottom,right,prob) {
+        this.id = "";
+       this.type=""; 
+       this.top ="";
+       this.left=""; 
+       this.bottom=""; 
+       this.right=""; 
+       this.prob="" ;
+}  
+ 
+
+ 
  
 function deserialise(string){
       
@@ -86,7 +100,29 @@ function serialise(myNodes){
       answervalue+=thisnode.prob;
       answervalue+=MEMBER_SEPARATOR;
       answervalue+=thisnode.parentID;
+      answervalue+=MEMBER_SEPARATOR; 
+      answervalue+=NODE_SEPARATOR;
+    } 
+  
+  
+       for(l=0;l<mybgNodes.length;l++){
+      var thisnode=myNodes[l]; 
+      answervalue+="g";
       answervalue+=MEMBER_SEPARATOR;
+      answervalue+=thisnode.id;
+      answervalue+=MEMBER_SEPARATOR;
+      
+      answervalue+=thisnode.left;
+      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=thisnode.top;
+      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=thisnode.right;
+      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=thisnode.bottom;
+      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=thisnode.prob;
+      answervalue+=MEMBER_SEPARATOR;
+       
       answervalue+=NODE_SEPARATOR;
     } 
  
@@ -121,6 +157,10 @@ function generateID(myNodes){
      myNodes.push(node);
      sentToparentPage();
    }
+ function addNewbgNode(node){ 
+     mybgNodes.push(node);
+     sentToparentPage();
+   }
 
 
 function  emptymyNodes(){ 
@@ -128,6 +168,25 @@ function  emptymyNodes(){
     jsPlumb.reset; 
     sentToparentPage();
    }
+
+ function updatebgNode(node,property){ 
+      var myNodesArray=mybgNodes; 
+      for(n=0; n<myNodesArray.length;n++){ 
+         var n= mybgNodes[n]; 
+        if(  n.id== node.id){
+          if(property=="top") {n.top=node.top;}
+          if(property=="left"){n.left=node.left;}
+          if(property=="bottom"){n.bottom=node.bottom;}
+          if(property=="right"){n.right=node.right;}
+          if(property=="prob"){n.prob=node.prob;}
+         
+        }
+       } 
+   if(mode == "student"){ sentToparentPage();}
+   return;
+      };
+
+
 
 
  function updateNode(node,property){ 
@@ -171,7 +230,7 @@ function  giveWarning(){
 function sentToparentPage()
 { console.log(myNodes);
   giveWarning();
-  var answervalue = serialise(myNodes); 
+  var answervalue = serialise(myNodes,mybgNodes); 
   
   if(mode !="submission" && mode !="correct"){
  // window.parent.save(answervalue);

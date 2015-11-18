@@ -1,7 +1,16 @@
-function drawbackground() {
+function drawbackground(node) {
     
-   newdiv= document.createElement('div'); 
-   uniqueId= $(newdiv).uniqueId(); 
+   newdiv= document.createElement('div');  
+   uniqueId= $(newdiv).attr('id',node.id);
+  
+  
+  if(node.top==""){ 
+    
+       }
+     else{
+        console.log("set position");
+     $(newdiv).css({ top: node.top, left: node.left });
+     } 
    
    var containerId = $(newdiv).attr('id'); 
    $(newdiv).addClass("request-grid");
@@ -12,7 +21,7 @@ function drawbackground() {
    uniqueId= $(dragzone).uniqueId(); 
   // var dragId = $(dragzone).attr('id'); 
   // $(dragzone).addClass("request-grid"); 
-  backgroundgreen= document.createElement('div'); 
+   backgroundgreen= document.createElement('div'); 
    $(backgroundgreen).addClass("green-background");
   
    deletezone= document.createElement('div'); 
@@ -112,7 +121,13 @@ function drawbackground() {
     });
   
    
-   
+     var top= $('#'+containerId).position().top;
+      var left=$('#'+containerId).position().left;
+  
+      node.top=top;
+      node.left=left;
+  
+      return node;
   
    
 
