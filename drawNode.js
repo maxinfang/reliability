@@ -284,15 +284,14 @@ function drawnode(node){
       var prob;
       var problabel;
       var probs;
-   
+ 
       prob=addtext("Prob",node.prob);
       problabel=addlabel("Prob");
       $(datadiv).append( problabel);  
       $(datadiv).append( prob);  
     $(datadiv).append(dropL.show()); 
-        
-        
-      
+  
+ 
      var br = document.createElement('br')  
     //$(datadiv).append(br);
     // $(datadiv).append(problabel);
@@ -300,7 +299,7 @@ function drawnode(node){
     //  $(datadiv).append(probs);
          
          
-          prob.addEventListener("input", function(e) {
+    prob.addEventListener("input", function(e) {
     
     var num = prob.value; 
     var message = validateNum( num);
@@ -316,6 +315,8 @@ function drawnode(node){
        
      $(prob).change(function() {
           if(! checkInp($(prob).val())){
+            
+              console.log($(prob).val());
            node.prob= $(prob).val(); 
            updateNode(node,"prob");
        }

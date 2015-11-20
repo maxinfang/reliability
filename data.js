@@ -29,7 +29,7 @@ function addtext(lable,value){
   var text= document.createElement('input'); 
   $(text).uniqueId();  
   text.type="text";
-  $(text).addClass("droplist");
+  $(text).addClass("Prob");
   text.style.width='40px';
   text.name=lable;    if(typeof(value) != "undefined")
   {
