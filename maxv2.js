@@ -140,6 +140,9 @@ $(document).ready(function()  {
         var conn = info.connection;
         var parentId=$('#'+conn.sourceId).parent().attr('id');
         var childId=$('#'+conn.targetId).parent().attr('id');
+    
+    
+  
         var node = findnode(childId);
         node.parentID=parentId;
         updateNode(node,"parentID"); 
@@ -160,11 +163,23 @@ $(document).ready(function()  {
         });
     
     
-       
+ 
     
         });
   
-  
+  jsPlumb.bind("beforeDrop", function(connection) {
+    var conn = connection; ;
+    console.log(conn);
+    if (conn.sourceId==conn.targetId )return false;  
+    var childId=$('#'+conn.targetId).parent().attr('id');
+    var  parentId=$('#'+conn.sourceId).parent().attr('id');
+    if (childId =='end' & parentId =='0') return false;
+   
+    return true;
+    
+    
+    
+});
    //initialzie button action to different buttons;
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
   var conn = info.connection; 
@@ -174,7 +189,7 @@ $(document).ready(function()  {
         var  paId=$('#'+conn.sourceId).parent().attr('id');
         var node = findnode(childId);
        var beforeId= $('#'+info.targetId).parent().attr('id');
-      // console.log("thisnodepriviousid"+beforeId);
+       console.log("thisnodepriviousid"+beforeId);
       
      if(beforeId!=childId){
        var pendingnode = findnode(beforeId);;
@@ -253,7 +268,8 @@ $(document).ready(function()  {
   
    $("#r").click(function(){ 
          var node= new Node();
-         node.id =generateID(myNodes);
+          var $result = myNodes.concat( mybgNodes);
+         node.id =generateID( $result );
          node.type="A";
          node= drawnode(node);
          addNewNode(node);
@@ -268,15 +284,17 @@ $(document).ready(function()  {
   });
    $("#d").click(function(){ 
          var node= new Node();
-         node.id =generateID(myNodes);
+         var $result =  myNodes.concat( mybgNodes);
+         node.id =generateID( $result );
          node.type="D";
          node= drawnode(node);
          addNewNode(node);
   });
    $("#background").click(function(){ 
          var node= new bgNode();
-         node.id =generateID(mybgNodes);
-         
+         var $result =  myNodes.concat( mybgNodes);
+         node.id =generateID( $result );
+         node.type="B";
          node= drawbackground(node);
          addNewbgNode(node);
          

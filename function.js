@@ -1,5 +1,21 @@
-var MEMBER_SEPARATOR='b';
-var NODE_SEPARATOR='a';
+/*Use “a” as separator between red rectangles and end node data and between end node data and green rectangles
+ 
+Use “b” as separator between red rectangles
+Use “c” as separator between red rectangle fields
+Use “d” as separator between parent nodes
+ 
+Use “d” as separator between parent nodes of end node
+ 
+Use “g” as separator between green rectangles
+Use “h” as separator between green rectangle fields
+*/
+var general_separator='a';
+var red_SEPARATOR='b';
+var red_fileds_SEPARATOR ='c';
+var parent_SEPARATOR ='d';
+var green_SEPARATOR ='g';
+var green_feilds_SEPARATOR='h';
+    
 
 
 if (!Array.prototype.indexOf)
@@ -38,7 +54,7 @@ function Node(id,type,parent,top,left,selectvalue,emv,prob){
      }  
 
 function bgNode(id,type,top,left,bottom,right,prob) {
-        this.id = "";
+       this.id = "";
        this.type=""; 
        this.top ="";
        this.left=""; 
@@ -81,61 +97,63 @@ function deserialise(string){
 }
 
 
-function serialise(myNodes){
+function serialise(myNodes,mybgNodes){
       var answervalue =""; 
       for(l=0;l<myNodes.length;l++){
       var thisnode=myNodes[l]; 
       answervalue+=thisnode.type;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.id;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.value;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.left;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.top;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.emv;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.prob;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.parentID;
-      answervalue+=MEMBER_SEPARATOR; 
-      answervalue+=NODE_SEPARATOR;
+      answervalue+=red_fileds_SEPARATOR; 
+      answervalue+=red_SEPARATOR;
     } 
+      
   
+      answervalue+= general_separator;
   
        for(l=0;l<mybgNodes.length;l++){
-      var thisnode=myNodes[l]; 
-      answervalue+="g";
-      answervalue+=MEMBER_SEPARATOR;
+      var thisnode=mybgNodes[l]; 
+         
+      answervalue+=thisnode.type;
+      answervalue+=green_feilds_SEPARATOR;
       answervalue+=thisnode.id;
-      answervalue+=MEMBER_SEPARATOR;
-      
+      answervalue+=green_feilds_SEPARATOR; 
       answervalue+=thisnode.left;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=green_feilds_SEPARATOR;
       answervalue+=thisnode.top;
-      answervalue+=MEMBER_SEPARATOR;
-      answervalue+=thisnode.right;
-      answervalue+=MEMBER_SEPARATOR;
-      answervalue+=thisnode.bottom;
-      answervalue+=MEMBER_SEPARATOR;
-      answervalue+=thisnode.prob;
-      answervalue+=MEMBER_SEPARATOR;
+      answervalue+=green_feilds_SEPARATOR;
+      answervalue+="right";
+      answervalue+=green_feilds_SEPARATOR;
+      answervalue+="bottom";
+      answervalue+=green_feilds_SEPARATOR;
+      answervalue+="prob";
+      answervalue+=green_feilds_SEPARATOR;
        
-      answervalue+=NODE_SEPARATOR;
+      answervalue+=green_SEPARATOR;
     } 
  
       return answervalue;
 };
 
-function generateID(myNodes){
+function generateID(mymerged){
       
-  if (typeof(myNodes) == "undefined" ) {return 1;} 
-      var myNodesArray=myNodes;
+  if (typeof(mymerged) == "undefined" ) {return 1;} 
+      var myNodesArray=(mymerged);
       var max=0;   
       for(n=0; n<myNodesArray.length;n++){ 
-         var node= myNodes[n]; 
+         var node= mymerged[n]; 
           node.id >=max;
           max=node.id 
        } 
