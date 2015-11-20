@@ -60,8 +60,8 @@ function drawbackground(node) {
        
      $(textfield).change(function() {
           if(! checkInp($(textfield).val())){
-           //node.emv= $(prob).val(); 
-           //updateNode(node,"prob");
+           node.emv= $(prob).val(); 
+           updateNode(node,"prob");
        }
        else{
            
@@ -195,10 +195,12 @@ function drawnode(node){
       $(newdiv).addClass(node.type);
       
      //postion
+  
+     
      if(node.top==""){ 
        }
      else{
-        console.log("set position");
+        console.log("set position",node.top);
      $(newdiv).css({ top: node.top, left: node.left });
      } 
        
@@ -314,8 +316,8 @@ function drawnode(node){
        
      $(prob).change(function() {
           if(! checkInp($(prob).val())){
-           //node.emv= $(prob).val(); 
-           //updateNode(node,"prob");
+           node.prob= $(prob).val(); 
+           updateNode(node,"prob");
        }
        else{
            

@@ -74,7 +74,7 @@ function deserialise(string){
     //   console.log(stringnode);
        for(i=0;i<stringnode.length-1;i++){
      //      if(stringnode[i]==" ") continue;
-       var nodeAttribute=stringnode[i].split('b');
+       var nodeAttribute=stringnode[i].split('c');
        //console.log(nodeAttribute[1]);
        var node = new Node();
          console.log(nodeAttribute);
@@ -134,11 +134,11 @@ function serialise(myNodes,mybgNodes){
       answervalue+=green_feilds_SEPARATOR;
       answervalue+=thisnode.top;
       answervalue+=green_feilds_SEPARATOR;
-      answervalue+="right";
+      answervalue+=thisnode.top;
       answervalue+=green_feilds_SEPARATOR;
-      answervalue+="bottom";
+      answervalue+=thisnode.top;
       answervalue+=green_feilds_SEPARATOR;
-      answervalue+="prob";
+      answervalue+=thisnode.top;
       answervalue+=green_feilds_SEPARATOR;
        
       answervalue+=green_SEPARATOR;
