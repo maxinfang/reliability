@@ -73,11 +73,11 @@ function deserialise(string){
        var stringnode=  string.split('a');
       console.log(stringnode[0]);
        for(i=0;i<stringnode.length-1;i++){
-     //      if(stringnode[i]==" ") continue;
+           if(stringnode[i]==" ") continue;
        var nodeAttribute=stringnode[i].split('c');
        //console.log(nodeAttribute[1]);
        var node = new Node();
-         console.log(nodeAttribute);
+       console.log(nodeAttribute);
        node.type= nodeAttribute[0]
        node.id=nodeAttribute[1];
        node.value=nodeAttribute[2];
@@ -95,8 +95,10 @@ function deserialise(string){
 
 
 function serialise(myNodes,mybgNodes){
-      var answervalue =""; 
-      for(l=0;l<myNodes.length;l++){
+    var answervalue =""; 
+  
+    //if(myNodes ==[] && mybgNodes ==[] )
+    for(l=0;l<myNodes.length;l++){
       var thisnode=myNodes[l]; 
       answervalue+=thisnode.type;
       answervalue+=red_fileds_SEPARATOR;
@@ -140,7 +142,7 @@ function serialise(myNodes,mybgNodes){
        
       answervalue+=green_SEPARATOR;
     } 
- 
+     if (answervalue.length  <3) return "";
       return answervalue;
 };
 
