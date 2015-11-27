@@ -1,15 +1,13 @@
 function drawbackground(node) {
     
    newdiv= document.createElement('div');  
-   uniqueId= $(newdiv).attr('id',node.id);
+   uniqueId= $(newdiv).attr('id',node.id); 
   
-  
-  if(node.top==""){ 
-    
+  if(node.top==""){  
        }
      else{
         console.log("set position");
-     $(newdiv).css({ top: node.top, left: node.left });
+       $(newdiv).css({ top: node.top, left: node.left, right: node.right, left:node.left });
      } 
    
    var containerId = $(newdiv).attr('id'); 
@@ -37,8 +35,7 @@ function drawbackground(node) {
   
   
     
-  problabel=addlabel("Prob");
-  
+  problabel=addlabel("Prob"); 
   textfield=addtext("Prob","");
   $(newdiv).append(problabel);
   $(newdiv).append(textfield);
@@ -60,8 +57,9 @@ function drawbackground(node) {
        
      $(textfield).change(function() {
           if(! checkInp($(textfield).val())){
-           node.emv= $(prob).val(); 
-           updateNode(node,"prob");
+           node.prob= $(textfield).val(); 
+             console.log( node.prob);
+            updatebgNode(node,"prob");
        }
        else{
            
@@ -126,7 +124,7 @@ function drawbackground(node) {
   
       node.top=top;
       node.left=left;
-  
+    console.log(node);
       return node;
   
    

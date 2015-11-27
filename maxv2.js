@@ -268,7 +268,7 @@ $(document).ready(function()  {
   
    $("#r").click(function(){ 
          var node= new Node();
-          var $result = myNodes.concat( mybgNodes);
+          var $result = myNodes;
          node.id =generateID( $result );
          node.type="A";
          node= drawnode(node);
@@ -284,7 +284,7 @@ $(document).ready(function()  {
   });
    $("#d").click(function(){ 
          var node= new Node();
-         var $result =  myNodes.concat( mybgNodes);
+         var $result =mybgNodes;
          node.id =generateID( $result );
          node.type="D";
          node= drawnode(node);
@@ -292,8 +292,8 @@ $(document).ready(function()  {
   });
    $("#background").click(function(){ 
          var node= new bgNode();
-         var $result =  myNodes.concat( mybgNodes);
-         node.id =generateID( $result );
+         var $result = mybgNodes;;
+         node.id =generategreenID( $result );
          node.type="B";
          node= drawbackground(node);
          addNewbgNode(node);

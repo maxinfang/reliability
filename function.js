@@ -71,7 +71,7 @@ function deserialise(string){
        var array= new Array();
     //if (string ="no answer") return array;
        var stringnode=  string.split('a');
-    //   console.log(stringnode);
+      console.log(stringnode[0]);
        for(i=0;i<stringnode.length-1;i++){
      //      if(stringnode[i]==" ") continue;
        var nodeAttribute=stringnode[i].split('c');
@@ -88,11 +88,8 @@ function deserialise(string){
        node.parentID=nodeAttribute[7];   
        console.log(node);
        array.push(node);
-       }  
-  
-  console.log("-----deserialise------------ ");
-  console.log(array);
-  console.log("------------------------- ");
+       }   
+  console.log(array); 
      return array; 
 }
 
@@ -134,11 +131,11 @@ function serialise(myNodes,mybgNodes){
       answervalue+=green_feilds_SEPARATOR;
       answervalue+=thisnode.top;
       answervalue+=green_feilds_SEPARATOR;
-      answervalue+=thisnode.top;
+      answervalue+=thisnode.right;
       answervalue+=green_feilds_SEPARATOR;
-      answervalue+=thisnode.top;
+      answervalue+=thisnode.bottom;
       answervalue+=green_feilds_SEPARATOR;
-      answervalue+=thisnode.top;
+      answervalue+=thisnode.prob;
       answervalue+=green_feilds_SEPARATOR;
        
       answervalue+=green_SEPARATOR;
@@ -163,6 +160,22 @@ function generateID(mymerged){
       
       };
 
+function generategreenID(mynodes){
+      
+  if (typeof(mynodes) == "undefined" ) {return 1;} 
+      var myNodesArray=(mynodes);
+      var max=9999;   
+      for(n=0; n<myNodesArray.length;n++){ 
+         var node= mynodes[n]; 
+          node.id >=max;
+          max=node.id 
+       } 
+  
+      var ret= Number(max) +1;
+      return ret;
+      
+      };
+
   function findnode(id){ 
        for(n=0; n<myNodes.length;n++){
          if (myNodes[n].id == id){ 
@@ -177,6 +190,7 @@ function generateID(mymerged){
    }
  function addNewbgNode(node){ 
      mybgNodes.push(node);
+   console.log( mybgNodes);
      sentToparentPage();
    }
 
@@ -247,6 +261,7 @@ function  giveWarning(){
 
 function sentToparentPage()
 { console.log(myNodes);
+  console.log(mybgNodes);
   giveWarning();
   var answervalue = serialise(myNodes,mybgNodes); 
   
