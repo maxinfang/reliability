@@ -76,7 +76,20 @@ function drawbackground(node) {
    jsPlumb.draggable($(newdiv), {
     
   containment:$("#canvasdiv").parent(),
-        scroll:false     
+        scroll:false    ,
+      stop: function(event, ui ){ 
+          console.log(ui);
+          position = ui.position; 
+             //value="top:"+position.top+"left:"+position.left;
+          node.top=position.top;
+          node.left=position.left; 
+          node.right=position.right;
+          node.bottom=position.bottom;
+             updatebgNode(node,"top");
+             updatebgNode(node,"left"); 
+             updatebgNode(node,"right");
+             updatebgNode(node,"bottom"); 
+            }
   }); 
  // addShape("S", newdiv);
  // addShape("E", newdiv);
@@ -96,7 +109,21 @@ function drawbackground(node) {
   
     jsPlumb.draggable($("#"+ containerId), {
     containment:$("#canvasdiv").parent(),
-        scroll:false     
+          scroll:false,
+          stop: function(event, ui ){ 
+          console.log(ui);
+          position = ui.position; 
+             //value="top:"+position.top+"left:"+position.left;
+          node.top=position.top;
+          node.left=position.left; 
+          node.right=position.right;
+          node.bottom=position.bottom;
+             updatebgNode(node,"top");
+             updatebgNode(node,"left"); 
+             updatebgNode(node,"right");
+             updatebgNode(node,"bottom"); 
+            }
+             
     }); 
     
   
