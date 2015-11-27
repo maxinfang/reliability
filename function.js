@@ -71,9 +71,10 @@ function deserialise(string){
        var array= new Array();
     //if (string ="no answer") return array;
        var stringnode=  string.split('a');
-      console.log(stringnode[0]);
+       var stringnode = stringnode[0].split('b');
        for(i=0;i<stringnode.length-1;i++){
-           if(stringnode[i]==" ") continue;
+        //   if(stringnode[i]==" ") continue;
+         console.log(stringnode);
        var nodeAttribute=stringnode[i].split('c');
        //console.log(nodeAttribute[1]);
        var node = new Node();
