@@ -170,11 +170,20 @@ $(document).ready(function()  {
   jsPlumb.bind("beforeDrop", function(connection) {
     var conn = connection; ;
     console.log(conn);
+    console.log( myNodes);
+    
+    
     if (conn.sourceId==conn.targetId )return false;  
     var childId=$('#'+conn.targetId).parent().attr('id');
     var  parentId=$('#'+conn.sourceId).parent().attr('id');
     if (childId =='end' & parentId =='0') return false;
-   
+     
+    var child= findnode(childId);
+    console.log(child);
+   checkparentid =child.parentID;
+    if( checkparentid == parentId) return false;
+    console.log( parentId);
+    
     return true;
     
     
@@ -184,6 +193,7 @@ $(document).ready(function()  {
    jsPlumb.bind("connectionDetached", function(info, originalEvent) {
   var conn = info.connection; 
      console.log(conn);
+     console.log();
    var parentId=$('#'+conn.sourceId).parent().attr('id');
         var childId=$('#'+conn.targetId).parent().attr('id');
         var  paId=$('#'+conn.sourceId).parent().attr('id');
