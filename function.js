@@ -44,7 +44,8 @@ if (!Array.prototype.indexOf)
 function Node(id,type,parent,top,left,selectvalue,emv,prob){      
        this.id = "";
        this.type="";
-       this.parentID =""; 
+       this.parentID =[]; 
+    console.log("add some thing here");
        this.top ="";
        this.left=""; 
        this.value=""; 
@@ -86,7 +87,7 @@ function deserialise(string){
        node.top =nodeAttribute[4]; 
        node.emv=nodeAttribute[5];
        node.prob=nodeAttribute[6]; 
-       node.parentID=nodeAttribute[7];   
+       node.parentID="test";//nodeAttribute[7];   
        console.log(node);
        array.push(node);
        }   
@@ -231,7 +232,7 @@ function  emptymyNodes(){
         if(  n.id== node.id){
           if(property=="top") {n.top=node.top;}
           if(property=="left"){n.left=node.left;}
-          if(property=="parentID"){n.parentID=node.parentID;}
+          if(property=="parentID"){ n.parentID=node.parentID;  }
           if(property=="emv"){n.emv=node.emv;}
           if(property=="prob"){n.prob=node.prob;}
           if(property=="value"){n.value=node.value;}

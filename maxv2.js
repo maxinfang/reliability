@@ -143,10 +143,14 @@ $(document).ready(function()  {
     
     
   
-        var node = findnode(childId);
-        node.parentID=parentId;
+        var node = findnode(childId); 
+         parentArray= node.parentID;
+          
+         parentArray.push(parentId);
+           
         updateNode(node,"parentID"); 
-      
+        console.log("push to parent instead of replace");
+        console.log(myNodes);
         $("#"+childId).children().each(function(no,el){
            if($(el).hasClass("droplist")){
         $(el).show();
