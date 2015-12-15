@@ -116,7 +116,7 @@ function serialise(myNodes,mybgNodes){
       answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.prob;
       answervalue+=red_fileds_SEPARATOR;
-      answervalue+=thisnode.parentID;
+      answervalue+=thisnode.parentID.join("d");
       answervalue+=red_fileds_SEPARATOR; 
       answervalue+=red_SEPARATOR;
     } 
