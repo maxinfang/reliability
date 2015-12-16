@@ -87,7 +87,14 @@ function deserialise(string){
        node.top =nodeAttribute[4]; 
        node.emv=nodeAttribute[5];
        node.prob=nodeAttribute[6]; 
-       node.parentID="test";//nodeAttribute[7];   
+       
+       var parents=nodeAttribute[7].split('d');
+       var arr= new Array();
+       for(i=0;i<parents.length-1;i++){
+           arr.push(parents[i]); 
+       }
+      
+       node.parentID  = arr; 
        console.log(node);
        array.push(node);
        }   
@@ -123,10 +130,11 @@ function serialise(myNodes,mybgNodes){
       
   
       answervalue+= general_separator;
-  
+      answervalue+="end";
+      answervalue+=parent_SEPARATOR ='d';
+      answervalue+= general_separator; 
        for(l=0;l<mybgNodes.length;l++){
-      var thisnode=mybgNodes[l]; 
-         
+      var thisnode=mybgNodes[l];  
       answervalue+=thisnode.type;
       answervalue+=green_feilds_SEPARATOR;
       answervalue+=thisnode.id;
@@ -140,8 +148,7 @@ function serialise(myNodes,mybgNodes){
       answervalue+=thisnode.bottom;
       answervalue+=green_feilds_SEPARATOR;
       answervalue+=thisnode.prob;
-      answervalue+=green_feilds_SEPARATOR;
-       
+      answervalue+=green_feilds_SEPARATOR; 
       answervalue+=green_SEPARATOR;
     } 
      if (answervalue.length  <3) return "";
