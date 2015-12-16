@@ -88,13 +88,13 @@ function deserialise(string){
        node.emv=nodeAttribute[5];
        node.prob=nodeAttribute[6]; 
        
-       var parents=nodeAttribute[7].split('d');
-       var arr= new Array();
-       for(i=0;i<parents.length-1;i++){
-           arr.push(parents[i]); 
-       }
+   //    var parents=nodeAttribute[7].split('d');
+      // var arr= new Array();
+     //  for(i=0;i< parents.length-1;i++){
+       //    arr.push(parents[i]); 
+      // }
       
-       node.parentID  = arr; 
+       node.parentID  = nodeAttribute[7];
        console.log(node);
        array.push(node);
        }   
