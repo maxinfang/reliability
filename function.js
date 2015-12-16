@@ -94,7 +94,7 @@ function deserialise(string){
        //    arr.push(parents[i]); 
       // }
       
-       node.parentID  = nodeAttribute[7];
+       node.parentID  = nodeAttribute[7].split('d');
        console.log(node);
        array.push(node);
        }   
