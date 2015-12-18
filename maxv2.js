@@ -144,9 +144,11 @@ $(document).ready(function()  {
     
   
         var node = findnode(childId); 
+         
          parentArray= node.parentID;
-          
-         parentArray.push(parentId);
+   // if(parentArray ==""){parentArray=[parentId]}
+   // else  { 
+      parentArray.push(parentId);//}
            
         updateNode(node,"parentID"); 
         console.log("push to parent instead of replace");

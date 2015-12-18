@@ -15,6 +15,7 @@ function addConnections(nodeslist){
 
 
 function addConnection(node){
+      console.log("hard code start");
   
         var targetid ;
      $("#"+node.id).children().each(function(no,el){

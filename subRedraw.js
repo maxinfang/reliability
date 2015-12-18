@@ -234,7 +234,7 @@ $(document).ready(function()  {
           
         }
          
-        
+        console.log("ending");
         
         
        for(n=0; n<myNodes.length;n++){ 

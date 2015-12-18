@@ -16,6 +16,16 @@ var parent_SEPARATOR ='d';
 var green_SEPARATOR ='g';
 var green_feilds_SEPARATOR='h';
     
+Array.prototype.clean = function(deleteValue) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {         
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+};
+
 
 
 if (!Array.prototype.indexOf)
@@ -94,7 +104,8 @@ function deserialise(string){
        //    arr.push(parents[i]); 
       // }
       
-       node.parentID  = nodeAttribute[7].split('d');
+       node.parentID  = nodeAttribute[7].split('d').clean;
+       
        console.log(node);
        array.push(node);
        }   
@@ -123,15 +134,18 @@ function serialise(myNodes,mybgNodes){
       answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.prob;
       answervalue+=red_fileds_SEPARATOR;
-      answervalue+=thisnode.parentID.join("d");
+      thisnode.parentID.clean;
+ 
+      if(thisnode.parentID!==""){
+        answervalue+=thisnode.parentID.join("d");}
       answervalue+=red_fileds_SEPARATOR; 
       answervalue+=red_SEPARATOR;
     } 
       
   
-      answervalue+= general_separator;
-      answervalue+="end";
-      answervalue+=parent_SEPARATOR ='d';
+      //answervalue+= general_separator;
+    //  answervalue+="";
+     // answervalue+=parent_SEPARATOR ='d';
       answervalue+= general_separator; 
        for(l=0;l<mybgNodes.length;l++){
       var thisnode=mybgNodes[l];  
