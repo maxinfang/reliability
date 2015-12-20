@@ -140,14 +140,15 @@ $(document).ready(function()  {
         var conn = info.connection;
         var parentId=$('#'+conn.sourceId).parent().attr('id');
         var childId=$('#'+conn.targetId).parent().attr('id');
-    
-    
+     
+		
   
         var node = findnode(childId); 
-         
+         console.log(node);
          parentArray= node.parentID;
    // if(parentArray ==""){parentArray=[parentId]}
    // else  { 
+        console.log( parentId);
       parentArray.push(parentId);//}
            
         updateNode(node,"parentID"); 
@@ -209,7 +210,7 @@ $(document).ready(function()  {
       
      if(beforeId!=childId){
        var pendingnode = findnode(beforeId);;
-        pendingnode.parentID="";
+        pendingnode.parentID=[];
         updateNode(pendingnode,"parentID");
        
        $("#"+beforeId).children().each(function(no,el){
@@ -234,7 +235,7 @@ $(document).ready(function()  {
      }
      
      if(paId!=childId) {
-        node.parentID="";
+        node.parentID=[];
         console.log("this nodeid:"+node.id);
         updateNode(node,"parentID");
         

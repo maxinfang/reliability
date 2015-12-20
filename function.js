@@ -104,7 +104,7 @@ function deserialise(string){
        //    arr.push(parents[i]); 
       // }
       
-       node.parentID  = nodeAttribute[7].split('d').clean;
+       node.parentID  = nodeAttribute[7].split('d').clean("");
        
        console.log(node);
        array.push(node);
@@ -134,7 +134,7 @@ function serialise(myNodes,mybgNodes){
       answervalue+=red_fileds_SEPARATOR;
       answervalue+=thisnode.prob;
       answervalue+=red_fileds_SEPARATOR;
-      thisnode.parentID.clean;
+      //thisnode.parentID.clean("");
  
       if(thisnode.parentID!==""){
         answervalue+=thisnode.parentID.join("d");}
