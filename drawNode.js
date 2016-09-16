@@ -31,7 +31,7 @@ function drawbackground(node) {
   $(deletezone).append(elem); 
    
    $(newdiv).append(backgroundgreen); 
-   $(newdiv).append(deletezone);
+   if(mode =="student") { $(newdiv).append(deletezone); } 
   
   
     
